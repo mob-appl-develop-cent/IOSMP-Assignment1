@@ -31,22 +31,32 @@ class ViewController: UIViewController {
             if !resultText.contains(".") || buttonText != "." {
                 lblResult.text = resultText + buttonText
             }
-        }else{
-            lblResult.text = buttonText
+        } else {
+            if buttonText == "." {
+                lblResult.text = "0."
+            } else {
+                lblResult.text = buttonText
+            }
         }
-        
         lastButtonClicked = buttonText
         userTyped = true
     }
     
     var resultValue: Double {
         get {
-            return Double(lblResult.text!)!
+            if lblResult.text == "."{
+                return 0.0
+            } else {
+                return Double(lblResult.text!)!
+                
+            }
         }
         set {
             let txtValue = String(newValue)
             if txtValue.suffix(2) == ".0" {
                 lblResult.text = String(txtValue.prefix(txtValue.count - 2))
+            } else if(txtValue == ".") {
+                lblResult.text = "0."
             } else {
                 lblResult.text = txtValue
             }
@@ -60,12 +70,11 @@ class ViewController: UIViewController {
             calc.setNumber(resultValue)
             userTyped = false
         }
-        
         if let operand = sender.currentTitle {
             if (lastButtonClicked != operand ||
                 (operand == "=" || operand == "π"
-                || operand == "√" || operand == "±"
-                || operand == "cos" || operand == "sin")) {
+                    || operand == "√" || operand == "±"
+                    || operand == "cos" || operand == "sin")) {
                 calc.calculate(symbol: operand)
             }
             lastButtonClicked = operand

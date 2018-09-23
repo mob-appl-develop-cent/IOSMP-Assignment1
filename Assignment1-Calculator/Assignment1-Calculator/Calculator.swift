@@ -39,24 +39,33 @@ class Calculator {
         case "sin":
             lastNumber = sin(lastNumber)
             pressedEquals = false
+        case "%":
+            if firstNumber != nil {
+                lastNumber = firstNumber! / lastNumber
+            } else {
+                lastNumber = lastNumber / 100
+            }
+            
+            pressedEquals = false
         case "±":
             if lastNumber != 0 {
                 lastNumber = -lastNumber
             }
             pressedEquals = false
         case "+", "-", "x", "÷":
-            equals()
-            operatorSelected = symbol
-            firstNumber = lastNumber
+            if !pressedEquals {
+                equals()
+                operatorSelected = symbol
+                firstNumber = lastNumber
+                pressedEquals = false
+            }
         case "=":
-            
                 if pressedEquals {
                     lastNumber = storedNumberContinuousEquals!
                 }
                 storedNumberContinuousEquals = lastNumber
                 pressedEquals = true
                 equals();
-            
         default:
             break
         }
