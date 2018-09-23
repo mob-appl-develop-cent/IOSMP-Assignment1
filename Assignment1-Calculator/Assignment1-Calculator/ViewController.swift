@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     private var userTyped = false
+    private var lastButtonClicked:String? = nil;
     
     @IBOutlet weak var lblResult: UILabel!
     override func viewDidLoad() {
@@ -19,9 +20,7 @@ class ViewController: UIViewController {
     
     @IBAction private func onClickClear(_ sender: UIButton) {
         userTyped = false
-        calc.firstNumber = nil
-        calc.operatorSelected = nil
-        calc.setNumber(0)
+        calc.clear()
         resultValue = calc.result
     }
     
@@ -36,6 +35,7 @@ class ViewController: UIViewController {
             lblResult.text = buttonText
         }
         
+        lastButtonClicked = buttonText
         userTyped = true
     }
     
@@ -44,7 +44,12 @@ class ViewController: UIViewController {
             return Double(lblResult.text!)!
         }
         set {
-            lblResult.text = String(newValue)
+            let txtValue = String(newValue)
+            if txtValue.suffix(2) == ".0" {
+                lblResult.text = String(txtValue.prefix(txtValue.count - 2))
+            } else {
+                lblResult.text = txtValue
+            }
         }
     }
     
@@ -57,15 +62,16 @@ class ViewController: UIViewController {
         }
         
         if let operand = sender.currentTitle {
-            calc.calculate(symbol: operand)
+            if (lastButtonClicked != operand ||
+                (operand == "=" || operand == "π"
+                || operand == "√" || operand == "±"
+                || operand == "cos" || operand == "sin")) {
+                calc.calculate(symbol: operand)
+            }
+            lastButtonClicked = operand
         }
         resultValue = calc.result
     }
-    
-    
-    
-    
-    
     
     
     
