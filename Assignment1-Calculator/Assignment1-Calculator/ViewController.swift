@@ -57,7 +57,9 @@ class ViewController: UIViewController {
                 lblResult.text = "∞"
             } else if txtValue == "-inf" {
                 lblResult.text = "-∞"
-            }else if txtValue.suffix(2) == ".0" {
+            } else if txtValue == "nan" {
+                lblResult.text = "Not a number"
+            } else if txtValue.suffix(2) == ".0" {
                 lblResult.text = String(txtValue.prefix(txtValue.count - 2))
             } else if(txtValue == ".") {
                 lblResult.text = "0."

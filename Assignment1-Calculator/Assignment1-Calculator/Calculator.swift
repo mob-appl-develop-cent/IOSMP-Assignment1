@@ -54,7 +54,7 @@ class Calculator {
             pressedEquals = false
         case "%":
             if firstNumber != nil {
-                lastNumber = firstNumber! / lastNumber
+                lastNumber = firstNumber! * (lastNumber / 100)
             } else {
                 lastNumber = lastNumber / 100
             }
