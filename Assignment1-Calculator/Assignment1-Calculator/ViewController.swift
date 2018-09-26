@@ -53,7 +53,11 @@ class ViewController: UIViewController {
         }
         set {
             let txtValue = String(newValue)
-            if txtValue.suffix(2) == ".0" {
+            if txtValue == "inf" {
+                lblResult.text = "∞"
+            } else if txtValue == "-inf" {
+                lblResult.text = "-∞"
+            }else if txtValue.suffix(2) == ".0" {
                 lblResult.text = String(txtValue.prefix(txtValue.count - 2))
             } else if(txtValue == ".") {
                 lblResult.text = "0."
@@ -75,14 +79,25 @@ class ViewController: UIViewController {
                 (operand == "=" || operand == "π"
                     || operand == "√" || operand == "±"
                     || operand == "cos" || operand == "sin")) {
-                calc.calculate(symbol: operand)
+                
+                do {
+                    try calc.calculate(symbol: operand)
+                } catch Calculator.CalcError.math(let errorMessage) {
+                    lblResult.text = errorMessage
+                    lastButtonClicked = operand
+                    print(errorMessage)
+                    return
+                } catch {
+                    lblResult.text = calc.genericErrorMessage
+                    lastButtonClicked = operand
+                    print(error)
+                    return
+                }
             }
             lastButtonClicked = operand
         }
         resultValue = calc.result
     }
-    
-    
     
 }
 

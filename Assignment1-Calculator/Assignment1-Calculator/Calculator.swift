@@ -3,6 +3,9 @@
 //  Assignment1-Calculator
 //
 //  Created by Aleixo Porpino Filho on 2018-09-22.
+//  Student ID:
+//  Date:
+//
 //  Copyright © 2018 Porpapps. All rights reserved.
 //
 
@@ -21,18 +24,28 @@ class Calculator {
     
     private var operatorSelected:String? = nil
     
+    let genericErrorMessage = "Imaginary number"
+    
+    public enum CalcError:Error {
+        case math(String)
+    }
+    
     func setNumber(_ number: Double) {
         lastNumber = number
     }
     
-    func calculate(symbol: String) {
+    func calculate(symbol: String) throws {
         switch symbol {
         case "π":
             lastNumber = Double.pi
             pressedEquals = false
         case "√":
-            lastNumber = sqrt(lastNumber)
             pressedEquals = false
+            if lastNumber > 0 {
+                lastNumber = sqrt(lastNumber)
+            } else {
+                throw CalcError.math(genericErrorMessage)
+            }
         case "cos":
             lastNumber = cos(lastNumber)
             pressedEquals = false
