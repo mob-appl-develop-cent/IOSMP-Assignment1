@@ -2,12 +2,10 @@
 //  Calculator.swift
 //  Assignment1-Calculator
 //
-//  Created by Aleixo Porpino Filho on 2018-09-22.
-//  Student ID:
-//  Date:
+//  Created by Jose Aleixo Porpino Filho on 2018-09-22.
+//  Student ID: 301005491
 //
-//  Copyright © 2018 Porpapps. All rights reserved.
-//
+//  Version 1.0.0
 
 import Foundation
 
@@ -18,7 +16,7 @@ class Calculator {
     
     private var storedNumberContinuousEquals:Double? = nil
     
-    private var pressedEquals = false
+    public var pressedEquals = false
     
     private var lastNumber = 0.0
     
@@ -41,7 +39,7 @@ class Calculator {
             pressedEquals = false
         case "√":
             pressedEquals = false
-            if lastNumber > 0 {
+            if lastNumber >= 0 {
                 lastNumber = sqrt(lastNumber)
             } else {
                 throw CalcError.math(genericErrorMessage)
@@ -68,10 +66,10 @@ class Calculator {
         case "+", "-", "x", "÷":
             if !pressedEquals {
                 equals()
-                operatorSelected = symbol
                 firstNumber = lastNumber
-                pressedEquals = false
             }
+            operatorSelected = symbol
+            pressedEquals = false
         case "=":
                 if pressedEquals {
                     lastNumber = storedNumberContinuousEquals!

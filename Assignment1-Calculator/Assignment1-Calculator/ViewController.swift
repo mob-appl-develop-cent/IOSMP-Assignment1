@@ -2,9 +2,10 @@
 //  ViewController.swift
 //  Assignment1-Calculator
 //
-//  Created by Jose Aleixo Porpino Filho on 2018-09-20.
-//  Copyright © 2018 Porpapps. All rights reserved.
+//  Created by Jose Aleixo Porpino Filho on 2018-09-22.
+//  Student ID: 301005491
 //
+//  Version 1.0.0
 
 import UIKit
 
@@ -27,19 +28,22 @@ class ViewController: UIViewController {
     @IBAction private func onClickNumbers(_ sender: UIButton) {
         let buttonText = sender.currentTitle!
         let resultText = lblResult.text!
-        if userTyped {
-            if !resultText.contains(".") || buttonText != "." {
-                lblResult.text = resultText + buttonText
-            }
-        } else {
-            if buttonText == "." {
-                lblResult.text = "0."
+        if resultText.count <= 9 {
+            if userTyped {
+                if !resultText.contains(".") || buttonText != "." {
+                    lblResult.text = resultText + buttonText
+                }
             } else {
-                lblResult.text = buttonText
+                if buttonText == "." {
+                    lblResult.text = "0."
+                } else {
+                    lblResult.text = buttonText
+                }
             }
         }
         lastButtonClicked = buttonText
         userTyped = true
+            
     }
     
     var resultValue: Double {
@@ -88,11 +92,15 @@ class ViewController: UIViewController {
                     lblResult.text = errorMessage
                     lastButtonClicked = operand
                     print(errorMessage)
+                    userTyped = false
+                    calc.clear();
                     return
                 } catch {
                     lblResult.text = calc.genericErrorMessage
                     lastButtonClicked = operand
                     print(error)
+                    calc.clear();
+                    userTyped = false
                     return
                 }
             }
