@@ -18,7 +18,7 @@ class Calculator {
     
     private var storedNumberContinuousEquals:Double? = nil
     
-    public var pressedEquals = false
+    private var pressedEquals = false
     
     private var lastNumber = 0.0
     
@@ -69,24 +69,25 @@ class Calculator {
             }
             pressedEquals = false
         case "+", "-", "x", "÷":
-            if !pressedEquals {
+            if !pressedEquals && (operatorSelected == nil || operatorSelected == symbol) {
                 equals()
                 firstNumber = lastNumber
             }
             operatorSelected = symbol
             pressedEquals = false
         case "=":
-                if pressedEquals {
-                    lastNumber = storedNumberContinuousEquals!
-                }
-                storedNumberContinuousEquals = lastNumber
-                pressedEquals = true
-                equals();
+            // Verify if equals was pressed and pass the stored number to lastnumber in order to do the same operation if press equals many times
+            if pressedEquals {
+                lastNumber = storedNumberContinuousEquals!
+            }
+            storedNumberContinuousEquals = lastNumber
+            pressedEquals = true
+            equals();
         default:
             break
         }
     }
-
+    
     
     // Equals method pass the calculation to lastNumber typed and the lastNumber typed is the first operation right now to keep working after pressing equals many times
     private func equals() {

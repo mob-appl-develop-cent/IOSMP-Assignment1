@@ -62,6 +62,7 @@ class ViewController: UIViewController {
             calc.setNumber(resultValue)
             userTyped = false
         }
+        // Verify the last operations
         if let operand = sender.currentTitle {
             if (lastButtonClicked != operand ||
                 (operand == "=" || operand == "π"
@@ -71,7 +72,7 @@ class ViewController: UIViewController {
                 // Exception handle to prevent crash
                 do {
                     try calc.calculate(symbol: operand)
-                } catch Calculator.CalcError.math(let errorMessage) {
+                } catch Calculator.CalcError.math(let errorMessage) { // Handle with the error treated in the calculator class and reset the values
                     lblResult.text = errorMessage
                     lastButtonClicked = operand
                     print(errorMessage)
@@ -103,20 +104,21 @@ class ViewController: UIViewController {
             }
         }
         set {
+            // Verify the exception result as inf, -inf, nan and .0 and handle with all of these
             let txtValue = String(newValue)
             if txtValue == "inf" {
-                lblResult.text = "∞"
+                lblResult.text = "∞" // Change inf to ∞
                 calc.clear();
                 userTyped = false
-            } else if txtValue == "-inf" {
+            } else if txtValue == "-inf" { // Change -inf to -∞
                 lblResult.text = "-∞"
                 calc.clear();
                 userTyped = false
-            } else if txtValue == "nan" {
+            } else if txtValue == "nan" { //Change nan for not a number
                 lblResult.text = "Not a number"
                 calc.clear();
                 userTyped = false
-            } else if txtValue.suffix(2) == ".0" {
+            } else if txtValue.suffix(2) == ".0" { // Substitue the .0 in doube values for just the value itself
                 lblResult.text = String(txtValue.prefix(txtValue.count - 2))
             } else if(txtValue == ".") {
                 lblResult.text = "0."

@@ -12,6 +12,9 @@
 		8B001A0921545C6D003BCE06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B001A0721545C6D003BCE06 /* Main.storyboard */; };
 		8B001A0B21545C6F003BCE06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B001A0A21545C6F003BCE06 /* Assets.xcassets */; };
 		8B001A0E21545C6F003BCE06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B001A0C21545C6F003BCE06 /* LaunchScreen.storyboard */; };
+		8B4DE36F215DA4C800E408F7 /* launch-calculator-top.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DE36D215DA4C800E408F7 /* launch-calculator-top.png */; };
+		8B4DE370215DA4C800E408F7 /* launch-calculator-botton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DE36E215DA4C800E408F7 /* launch-calculator-botton.png */; };
+		8B4DE372215DAD0600E408F7 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DE371215DAD0600E408F7 /* background.png */; };
 		8B63E10721585D4600522AEB /* app_icon180x180.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B63E10221585D4600522AEB /* app_icon180x180.png */; };
 		8B63E10821585D4600522AEB /* app_icon40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B63E10321585D4600522AEB /* app_icon40x40.png */; };
 		8B63E10921585D4600522AEB /* app_icon80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B63E10421585D4600522AEB /* app_icon80x80.png */; };
@@ -31,6 +34,9 @@
 		8B001A0A21545C6F003BCE06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B001A0D21545C6F003BCE06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B001A0F21545C6F003BCE06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B4DE36D215DA4C800E408F7 /* launch-calculator-top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch-calculator-top.png"; sourceTree = "<group>"; };
+		8B4DE36E215DA4C800E408F7 /* launch-calculator-botton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch-calculator-botton.png"; sourceTree = "<group>"; };
+		8B4DE371215DAD0600E408F7 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		8B63E10221585D4600522AEB /* app_icon180x180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon180x180.png; sourceTree = "<group>"; };
 		8B63E10321585D4600522AEB /* app_icon40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon40x40.png; sourceTree = "<group>"; };
 		8B63E10421585D4600522AEB /* app_icon80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon80x80.png; sourceTree = "<group>"; };
@@ -79,6 +85,7 @@
 				8B001A0C21545C6F003BCE06 /* LaunchScreen.storyboard */,
 				8B001A0F21545C6F003BCE06 /* Info.plist */,
 				8BBD90BC2156FEC500A0916F /* Calculator.swift */,
+				8B4DE371215DAD0600E408F7 /* background.png */,
 				8B63E10321585D4600522AEB /* app_icon40x40.png */,
 				8B63E10E21585DF600522AEB /* app_icon58x58.png */,
 				8B63E10521585D4600522AEB /* app_icon60x60.png */,
@@ -87,6 +94,8 @@
 				8B63E10621585D4600522AEB /* app_icon120x120.png */,
 				8B63E10221585D4600522AEB /* app_icon180x180.png */,
 				8B63E10C21585DF500522AEB /* app_icon512x512.png */,
+				8B4DE36E215DA4C800E408F7 /* launch-calculator-botton.png */,
+				8B4DE36D215DA4C800E408F7 /* launch-calculator-top.png */,
 			);
 			path = "Assignment1-Calculator";
 			sourceTree = "<group>";
@@ -149,13 +158,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B4DE370215DA4C800E408F7 /* launch-calculator-botton.png in Resources */,
 				8B001A0E21545C6F003BCE06 /* LaunchScreen.storyboard in Resources */,
 				8B63E11021585DF600522AEB /* app_icon87x87.png in Resources */,
+				8B4DE36F215DA4C800E408F7 /* launch-calculator-top.png in Resources */,
 				8B63E10A21585D4600522AEB /* app_icon60x60.png in Resources */,
 				8B63E10F21585DF600522AEB /* app_icon512x512.png in Resources */,
 				8B63E10721585D4600522AEB /* app_icon180x180.png in Resources */,
 				8B63E11121585DF600522AEB /* app_icon58x58.png in Resources */,
 				8B63E10921585D4600522AEB /* app_icon80x80.png in Resources */,
+				8B4DE372215DAD0600E408F7 /* background.png in Resources */,
 				8B001A0B21545C6F003BCE06 /* Assets.xcassets in Resources */,
 				8B63E10821585D4600522AEB /* app_icon40x40.png in Resources */,
 				8B63E10B21585D4700522AEB /* app_icon120x120.png in Resources */,
